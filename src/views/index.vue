@@ -1,19 +1,19 @@
 <template>
     <Row type="flex" style="height:100%" justify="center" class="code-row-bg">
-        <Col span="18">
+        <Col span="20">
 
+       </div>
+        <back-img></back-img>
        <!--menu-->
-        <lab-menu></lab-menu>
-
+       <lab-menu></lab-menu>
         <!--content-->
-        <div class="content" style="height:100px">
+        <div class="content" style="margin-top: 20px">
             <router-view></router-view>
         </div>
 
         <!--footer-->
         <lab-footer></lab-footer>
         </Col>
-
 
         <i-switch @on-change="change">
             <span slot="open">ENG</span>
@@ -25,27 +25,30 @@
     import Vue from 'vue'
     import LabMenu from './pages/main/LabMenu.vue'
     import LabFooter from './pages/main/LabFooter.vue'
+    import BackImg from './pages/main/BackImg.vue'
     export default {
         data () {
             return {
             }
         },
+        computed:{
+            eng(){
+                return this.$store.state.eng
+            }
+        },
         methods: {
+
             change(lan){
+                this.$store.commit('changeLanguage');
                 if (lan) {
                     Vue.config.lang = 'zh-CN';
                 } else {
                     Vue.config.lang = 'en-US';
                 }
             },
-            handleStart() {
-                this.$Modal.info({
-                    title: 'Bravo',
-                    content: 'Now, enjoy the convenience of iView.'
-                });
-            }
+
         },
-        components: {LabMenu,LabFooter}
+        components: {LabMenu,LabFooter,BackImg}
     };
 </script>
 <style>

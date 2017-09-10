@@ -1,0 +1,54 @@
+<template>
+    <div>
+        <Row :gutter="16">
+            <Col span="6">
+            <lab-teacher :teacherData="teacher"></lab-teacher>
+            <Major style="margin-top: 20px"></Major>
+            </Col>
+            <Col span="18">
+            <Tree></Tree>
+            </Col>
+        </Row>
+    </div>
+</template>
+<script>
+    import  Major from '../home/Major.vue'
+    import Tree from './Tree.vue'
+    import LabTeacher from './LabTeacher.vue'
+    export default {
+        data(){
+            return {
+                teacher: [
+                    {name: '程林松', eng: 'Cheng', url: '/team/cls',img:'https://hk-kevin.github.io/vue_api/img/teacher/cry.png'},
+                    {name: '李春兰', eng: 'Li', url: '/team/lcl',img:'https://hk-kevin.github.io/vue_api/img/teacher/cry.png'},
+                    {name: '黄世军', eng: 'Huang', url: '/team/hsj',img:'https://hk-kevin.github.io/vue_api/img/teacher/cry.png'},
+                    {name: '薛永超', eng: 'Xue', url: '/team/xyc',img:'https://hk-kevin.github.io/vue_api/img/teacher/cry.png'},
+                    {name: '曹仁义', eng: 'Cao', url: '/team/cry',img:'https://hk-kevin.github.io/vue_api/img/teacher/cry.png'},
+
+                ]
+            }
+        },
+        mounted(){
+            console.log($)
+        },
+        components: {Tree,LabTeacher,Major}
+    };
+</script>
+<style scoped>
+    .list {
+        color: #555;
+        position: relative;
+        display: block;
+        padding: 10px 15px;
+        margin-bottom: -1px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .list:hover {
+        background-color: #f5f5f5;
+        border-right: 3px solid green;
+    }
+</style>

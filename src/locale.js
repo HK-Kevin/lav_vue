@@ -20,6 +20,10 @@ export default {
             news:'组内动态',
             lab:'实验研究',
             contact:'联系我们'
+        },
+        component:{
+            research:'研究方向',
+            more:'更多'
         }
     },
     'en-US': {
@@ -42,7 +46,11 @@ export default {
             },
             news:'News',
             lab:'Lab',
-            contact:'contact'
+            contact:'Contact'
+        },
+        component:{
+            research:'Research',
+            more:'More'
         }
     }
 };

@@ -6,6 +6,7 @@ import Vuex from 'vuex';
 import Util from './libs/util';
 import App from './app.vue';
 import 'iview/dist/styles/iview.css';
+import $ from 'jquery'
 
 import VueI18n from 'vue-i18n';
 import Locales from './locale';
@@ -51,19 +52,22 @@ router.afterEach(() => {
 
 const store = new Vuex.Store({
     state: {
-
+        eng:true,
+        ip:'https://hk-kevin.github.io/vue_api/img/'
     },
     getters: {
-
+        getLanguage: state => state.eng
     },
     mutations: {
-
+        changeLanguage (state) {
+            state.eng = !state.eng
+        },
     },
     actions: {
 
     }
 });
-Vue.config.lang = 'en-US';
+Vue.config.lang = 'zh-CN';
 
 new Vue({
     el: '#app',

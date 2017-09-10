@@ -35,6 +35,11 @@ module.exports = merge(webpackBaseConfig, {
                 warnings: false
             }
         }),
+       // new webpack.optimize.CommonsChunkPlugin('common.js'),
+        new webpack.ProvidePlugin({
+            jQuery: "jquery",
+            $: "jquery"
+        }),
         new HtmlWebpackPlugin({
             filename: '../index_prod.html',
             template: './src/template/index.ejs',
