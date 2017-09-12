@@ -5,14 +5,15 @@
                 <Col span="5">
                 <div style="width: 100%;height: 1px"></div>
                 <Affix :offset-top="90">
-                <Menu active-name="cls" @on-select="getName" width="auto" :open-names="['1']">
+                    <Menu :active-name="activeItem" @on-select="getName" width="auto">
 
-                    <MenuItem v-for="(item,index) in teacherList" :name="item.url" >
-                        <Icon :type="item.type"></Icon>{{eng ? item.name :item.eng}}
-                    </MenuItem>
+                        <MenuItem v-for="(item,index) in teacherList" :name="item.url">
+                            <Icon :type="item.type"></Icon>
+                            {{eng ? item.eng :item.name}}
+                        </MenuItem>
 
-                </Menu>
-                    </Affix>
+                    </Menu>
+                </Affix>
                 </Col>
                 <Col span="19">
                 <div class="layout-content-main">
@@ -25,7 +26,7 @@
     </div>
 </template>
 <script>
-import OneContent from './OneContent.vue'
+    import OneContent from './OneContent.vue'
     export default {
         computed: {
             eng(){
@@ -35,12 +36,13 @@ import OneContent from './OneContent.vue'
 
         data(){
             return {
+                activeItem:'',
                 teacherList: [
-                        {name: '程林松', url: '/team/cls', eng: 'Cheng', type: 'university'},
-                        {name: '李春兰', url: '/team/lcl', eng: 'Li', type: 'university'},
-                        {name: '黄世军', url: '/team/hsj', eng: 'Huang', type: 'university'},
-                        {name: '薛永超', url: '/team/xyc', eng: 'Xue', type: 'university'},
-                        {name: '曹仁义', url: '/team/cry', eng: 'Cao', type: 'university'},
+                    {name: '程林松', url: '/team/cls', eng: 'Cheng', type: 'university'},
+                    {name: '李春兰', url: '/team/lcl', eng: 'Li', type: 'university'},
+                    {name: '黄世军', url: '/team/hsj', eng: 'Huang', type: 'university'},
+                    {name: '薛永超', url: '/team/xyc', eng: 'Xue', type: 'university'},
+                    {name: '曹仁义', url: '/team/cry', eng: 'Cao', type: 'university'},
                 ]
             }
         },
@@ -50,7 +52,11 @@ import OneContent from './OneContent.vue'
                 this.$router.push(a)
             }
         },
-        components:{OneContent}
+        created(){
+            this.id = this.$route.params.id;
+            this.activeItem = '/team/'+this.id;
+        },
+        components: {OneContent}
 
     };
 </script>

@@ -23,7 +23,10 @@ export default {
         },
         component:{
             research:'研究方向',
-            more:'更多'
+            more:'更多',
+            teacher:"指导老师",
+            stu:'在研学生',
+            graduate:'毕业学生'
         }
     },
     'en-US': {
@@ -50,7 +53,10 @@ export default {
         },
         component:{
             research:'Research',
-            more:'More'
+            more:'More',
+            teacher:"Teacher",
+            stu:'Student',
+            graduate:'Student'
         }
     }
 };

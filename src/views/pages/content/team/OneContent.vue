@@ -4,11 +4,11 @@
           <img style="width: 200px;height: 300px" :src="one.img" alt="">
       </div>
         <Card>
-            <p slot="title">{{eng ? one.name.china : one.name.eng}}</p>
+            <p slot="title" style="font-size: 18px">{{eng ? one.name.eng : one.name.china}}</p>
             <div v-html="one.introduce.china"></div>
         </Card>
         <Card style="margin-top: 30px">
-            <p slot="title">教研成果</p>
+            <p slot="title" style="font-size: 18px">教研成果</p>
             <ul>
                 <li v-for="(item,index) in one.paperList" :key="index" class="list">{{index+1}} .{{item}}</li>
 

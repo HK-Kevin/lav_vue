@@ -41,9 +41,9 @@
             change(lan){
                 this.$store.commit('changeLanguage');
                 if (lan) {
-                    Vue.config.lang = 'zh-CN';
-                } else {
                     Vue.config.lang = 'en-US';
+                } else {
+                    Vue.config.lang = 'zh-CN';
                 }
             },
 

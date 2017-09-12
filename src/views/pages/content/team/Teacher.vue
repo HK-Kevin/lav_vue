@@ -1,7 +1,7 @@
 <template>
     <div>
         <Alert type="success">
-            指导老师
+            <h2>{{ $t('component.teacher')}}</h2>
         </Alert>
 
         <Row :gutter="16">
@@ -11,16 +11,17 @@
                     <Col span="5" style="width: 100%">
                     <div style="width: 100%;text-align:center;">
                         <img class="imgStyle" :src="teacher.cheng.img">
-                        <h3 style="text-align: center"><a :href="teacher.cheng.url">{{eng?teacher.cheng.name :teacher.cheng.eng}}</a></h3>
+                        <h3 style="text-align: center"><a @click.prevent="getName(teacher.cheng.url)">{{eng?teacher.cheng.eng :teacher.cheng.name}}</a></h3>
 
                     </div>
                     </Col>
 
                 </Row>
                 <p>&nbsp&nbsp&nbsp&nbsp
-{{eng ? teacher.cheng.introduce :teacher.cheng.introduceEng}}
+{{eng ? teacher.cheng.introduceEng :teacher.cheng.introduce}}
                 </p>
             </Card>
+
             </Col>
 
             <Col span="16">
@@ -31,7 +32,7 @@
                          :src="item.img" alt="">
                     <p>
                     <h3 style="    margin-top: 20px;
-    margin-bottom: 20px;font-size: 24px;"><a :href="item.url">{{eng ? item.name :item.eng}}</a></h3></p>
+    margin-bottom: 20px;font-size: 24px;"><a @click.prevent="getName(item.url)">{{eng ? item.eng :item.name}}</a></h3></p>
                 </div>
                 </Col>
 
@@ -51,7 +52,11 @@
                 return this.$store.state.eng
             }
         },
-
+        methods:{
+            getName(a){
+                this.$router.push(a)
+            }
+        },
         data(){
             return {
                 teacher: {

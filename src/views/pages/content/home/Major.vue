@@ -8,14 +8,15 @@
             <Icon type="forward"></Icon>
             {{ $t('component.more')}}
         </a>
-        <div v-for="(one,index) in research" :key="index">
+        <img style="width: 100%" src="https://hk-kevin.github.io/vue_api/img/oilfield.jpeg" alt="">
+        <div v-for="(one,index) in research" :key="index" style="margin-left: 10px">
             <p>
                 <Icon type="ios-star"></Icon>
-                {{eng ? one.main.title : one.main.eng}}
+                {{eng ? one.main.eng : one.main.title}}
             </p>
             <ol style="margin-left: 15px">
                 <li v-for="item in one.items" style="height: 30px">
-                    <router-link  to="item.router">{{eng ? item.name : item.eng}}</router-link>
+                    <router-link  to="item.router">{{eng ? item.eng : item.name}}</router-link>
 
                 </li>
             </ol>

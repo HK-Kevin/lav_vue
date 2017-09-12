@@ -1,9 +1,9 @@
 <template>
     <div>
         <Card v-for="(item,index) in cardData" :key="index" style="margin-bottom: 30px">
-            <p slot="title">{{eng ? item.name : item.eng}}</p>
+            <p slot="title">{{eng ? item.eng : item.name}}</p>
             <p class="item" v-for="(one,ind) in item.child" :key="ind"><span>
-                {{ind+1}} .{{one}}
+                {{ind+1}} .{{eng ? one.eng :one.title}}
             </span></p>
         </Card>
     </div>
@@ -19,37 +19,51 @@
         data(){
             return {
                 cardData: {},
-                achieveData:{
+                achieveData: {
                     program: [{
                         name: '国家基金',
                         eng: 'fund',
-                        child: [' 页岩储层纳孔微缝耦合系统全息表征方法研究》（编号：41672132）；负责人：薛永超；起止时间：2017年-2020年。']
+                        child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
                     },
                         {
                             name: '“973”国家基础理论研究',
                             eng: '973',
-                            child: [' 页岩储层纳孔微缝耦合系统全息表征方法研究》（编号：41672132）；负责人：薛永超；起止时间：2017年-2020年。']
+                            child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
                         },
                         {
                             name: '国家重大专项',
                             eng: 'nation',
-                            child: [' 页岩储层纳孔微缝耦合系统全息表征方法研究》（编号：41672132）；负责人：薛永超；起止时间：2017年-2020年。']
+                            child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
                         },
                         {
                             name: '省部级科研项目',
                             eng: 'province',
-                            child: [' 页岩储层纳孔微缝耦合系统全息表征方法研究》（编号：41672132）；负责人：薛永超；起止时间：2017年-2020年。']
+                            child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
                         }],
                     prize: [{
                         name: '科研获奖',
                         eng: 'fund',
-                        child: [' 程林松, 黄世军, 赵凤兰, 李春兰, 曹仁义．《超稠油多介质辅助重力泄油渗流机理及开发关键技术》, 2015年中国石油和石化工业联合会科技进步三等奖。']
+                        child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
                     },
                         {
                             name: '教学获奖',
                             eng: '973',
-                            child: [' 页岩储层纳孔微缝耦合系统全息表征方法研究》（编号：41672132）；负责人：薛永超；起止时间：2017年-2020年。']
-                        }]
+                            child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
+                        }],
+                    patent: [{
+                        name: '申请专利',
+                        eng: '',
+                        child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
+                    },
+                        {
+                            name: '软件著作权',
+                            eng: '',
+                            child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
+                        }],
+                    2017:[{
+                        name: '2017年发表论文',
+                        eng: '',
+                        child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]}]
                 }
             }
         },
@@ -59,10 +73,10 @@
                 this.$router.push(a)
             }
         },
-        watch:{
-            '$route':function (newValue) {
+        watch: {
+            '$route': function (newValue) {
                 let id = newValue.params.id;
-                this.cardData =this.achieveData[id];
+                this.cardData = this.achieveData[id];
             }
         },
         components: {}

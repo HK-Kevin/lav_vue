@@ -4,7 +4,35 @@
         <div class="tree well">
 
             <ul>
-                <li>
+                <li v-for="(first,index) in treeData" :key="index">
+
+                   <span> {{eng ? first.eng : first.first}}
+</span>
+
+                    <ul>
+
+                        <li v-for="(second,ind) in first.content" :key="ind">
+
+                            <span> {{eng ? second.eng : second.second}}</span>
+                            <ul>
+
+                                <li v-for="(third,i) in second.content" :key="i">
+
+                                    <span><i class="glyphicon glyphicon-menu-right"></i><a
+                                            :href="third.url">  {{eng ? third.eng : third.name}}</a></span>
+                                </li>
+
+
+
+                            </ul>
+
+                        </li>
+
+
+                    </ul>
+
+                </li>
+               <!-- <li>
 
                    <span> 1. 复杂油气藏建模及数值模拟
 </span>
@@ -247,7 +275,7 @@
                         </li>
                     </ul>
 
-                </li>
+                </li>-->
             </ul>
         </div>
     </div>
@@ -260,12 +288,53 @@
             return {
                 treeData: [
                     {
-                        first: ' 1. 复杂油气藏建模及数值模拟', second: [{one: '1.1 高含水油藏：', two: [{name: '缝洞识别及刻画', url: ''},{name: '双重介质油藏地质建模', url: ''},{name: '双重介质油藏产能评价', url: ''}]}]
+                        first: ' 1. 复杂油气藏建模及数值模拟',
+                        eng:'',
+                        content: [{
+                            second: '1.1 高含水油藏：',
+                            content: [
+                                {name: '夹层识别与表征技术', eng: '', url: ''}, {
+                                    name: '“动静结合，迭代建模建”技术',
+                                    eng: '',
+                                    url: ''
+                                }, {
+                                    name: '底水油藏水平井稳油控水综合治理技术',
+                                    eng: '',
+                                    url: ''
+                                },
+                                {
+                                    name: '强非均质储层水线推进全过程分析评价技术',
+                                    eng: '',
+                                    url: ''
+                                }]
+                        },{
+                            second: '1.2 高含水油藏：',
+                            content: [
+                                {name: '夹层识别与表征技术', eng: '', url: ''}, {
+                                    name: '“动静结合，迭代建模建”技术',
+                                    eng: '',
+                                    url: ''
+                                }, {
+                                    name: '底水油藏水平井稳油控水综合治理技术',
+                                    eng: '',
+                                    url: ''
+                                },
+                                {
+                                    name: '强非均质储层水线推进全过程分析评价技术',
+                                    eng: '',
+                                    url: ''
+                                }]
+                        }]
                     }]
             }
         },
         mounted(){
             this.run()
+        },
+        computed:{
+            eng(){
+                return this.$store.state.eng
+            }
         },
         methods: {
             run(){

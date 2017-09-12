@@ -22,12 +22,12 @@
                 <Icon type="stats-bars"></Icon>
                 {{ $t('nav.achievement.title')}}
             </template>
-                <MenuItem name="/achievement/paper"> {{ $t('nav.achievement.paper')}}</MenuItem>
+                <MenuItem name="/achievement/2017"> {{ $t('nav.achievement.paper')}}</MenuItem>
                 <MenuItem name="/achievement/program"> {{ $t('nav.achievement.program')}}</MenuItem>
                 <MenuItem name="/achievement/book">{{ $t('nav.achievement.book')}}</MenuItem>
                 <MenuItem name="/achievement/prize">{{ $t('nav.achievement.prize')}}</MenuItem>
                 <MenuItem name="/achievement/patent">{{ $t('nav.achievement.patent')}}</MenuItem>
-                <MenuItem name="/achievement/landmark">{{ $t('nav.achievement.landmark')}}</MenuItem>
+                <MenuItem name="/achievement/land">{{ $t('nav.achievement.landmark')}}</MenuItem>
         </Submenu>
         <MenuItem name="/news">
             <Icon type="social-designernews"></Icon>

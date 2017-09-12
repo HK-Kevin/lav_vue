@@ -1,7 +1,7 @@
 <template>
-        <div>
+        <div style="margin-top: 20px">
             <Alert type="success">
-                在研学生
+                <h2>{{ $t('component.student')}}</h2>
             </Alert>
 
             <Card v-for="(item,index) in student">

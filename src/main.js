@@ -52,7 +52,7 @@ router.afterEach(() => {
 
 const store = new Vuex.Store({
     state: {
-        eng:true,
+        eng:false,
         ip:'https://hk-kevin.github.io/vue_api/img/'
     },
     getters: {

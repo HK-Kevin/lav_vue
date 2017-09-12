@@ -1,7 +1,7 @@
 <template>
     <div>
         <Card v-for="(item,index) in bookData" :key="index" style="margin-bottom: 30px">
-            <p slot="title">{{eng ? item.type : item.eng}}</p>
+            <p slot="title">{{eng ? item.eng : item.type}}</p>
             <div style="width: 100%;text-align: center" v-for="(one,ind) in item.child" :key="ind">
                 <img :src="one.img" alt="">
                 <p>
