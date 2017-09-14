@@ -5,6 +5,7 @@ import Routers from './router';
 import Vuex from 'vuex';
 import Util from './libs/util';
 import App from './app.vue';
+import axios from 'axios';
 import 'iview/dist/styles/iview.css';
 import $ from 'jquery'
 
@@ -12,6 +13,10 @@ import VueI18n from 'vue-i18n';
 import Locales from './locale';
 import zhLocale from 'iview/src/locale/lang/zh-CN';
 import enLocale from 'iview/src/locale/lang/en-US';
+
+
+axios.defaults.baseURL = 'http://47.94.94.52:714';
+Vue.prototype.$http = axios
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
@@ -29,7 +34,6 @@ Vue.locale('zh-CN', mergeZH);
 Vue.locale('en-US', mergeEN);
 
 
-console.log(Vue.t('i.select.placeholder'))
 
 // 路由配置
 const RouterConfig = {
@@ -53,7 +57,7 @@ router.afterEach(() => {
 const store = new Vuex.Store({
     state: {
         eng:false,
-        ip:'https://hk-kevin.github.io/vue_api/img/'
+        ip:'http://47.94.94.52:714/img'
     },
     getters: {
         getLanguage: state => state.eng

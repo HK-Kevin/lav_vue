@@ -1,7 +1,7 @@
 <template>
             <div id="box" :ref="refRan" class="box">
                 <ul>
-                    <li v-for="(item,index) in lampData" :key="index"><img src="https://hk-kevin.github.io/vue_api/img/2000/yxp.png" alt=""/></li>
+                    <li v-for="(item,index) in lampData" :key="index"><img :src="ip+item" alt=""/></li>
 
                 </ul>
             </div>
@@ -62,6 +62,11 @@
                     oUl.style.left=curLeft+'px';
                 },20);
 
+            }
+        },
+        computed:{
+            ip(){
+                return this.$store.state.ip
             }
         },
         components: []

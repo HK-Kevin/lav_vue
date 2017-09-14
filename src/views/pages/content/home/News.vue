@@ -13,13 +13,18 @@
                 </CarouselItem>
 
             </Carousel>
-            <p v-for="(item,index) in news.title"><a href="##">{{index +1}} .   {{item}}</a></p>
+            <p v-for="(item,index) in news.title"><a href="##">{{index +1}} .   {{eng ? item.eng :item.name}}</a></p>
 
         </Card>
 </template>
 <script>
     export default {
-        props:['news']
+        props:['news'],
+        computed:{
+            eng(){
+                return this.$store.state.eng;
+            }
+        }
 
     };
 </script>

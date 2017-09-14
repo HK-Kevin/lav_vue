@@ -6,10 +6,10 @@
             <Icon type="forward"></Icon>
             {{ $t('component.more')}}
         </a>
-        <Carousel autoplay v-model="value2">
+        <Carousel autoplay >
             <CarouselItem v-for="(item,index) in teacherData" :key="index">
                 <div class="demo-carousel">
-                    <img :src="item.img" style="width: 100%" alt="">
+                    <img :src="ip+item.img" style="width: 100%" alt="">
                 </div>
             </CarouselItem>
         </Carousel>
@@ -24,15 +24,25 @@
 <script>
 
     export default {
-        props: ['teacherData'],
+        data(){
+            return{
+                teacherData:[]
+            }
+        },
         computed: {
             eng(){
                 return this.$store.state.eng
+            },
+            ip(){
+                return this.$store.state.ip
             }
         },
-        mounted(){
-
-        },
+        created(){
+            this.$http.get('/teacherList').then(res=> {
+                console.log(res.data)
+                this.teacherData = res.data;
+            })
+        }
     };
 </script>
 <style scoped>
