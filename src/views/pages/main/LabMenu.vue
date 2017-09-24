@@ -34,25 +34,11 @@
 
             {{ $t('nav.news')}}
         </MenuItem>
-        <Submenu name="/lab">
-            <template slot="title">
-                <Icon type="ios-flask"></Icon>
-                {{ $t('nav.lab')}}
-            </template>
-            <MenuGroup title="复杂油气藏建模及数值模拟">
-                <MenuItem name="3-1">高含水油藏</MenuItem>
-                <MenuItem name="3-2">碳酸盐岩油藏</MenuItem>
-                <MenuItem name="3-3">低渗致密气藏</MenuItem>
-            </MenuGroup>
-            <MenuGroup title="致密/页岩油气渗流机理及应用">
-                <MenuItem name="3-4">致密油气</MenuItem>
-                <MenuItem name="3-5">页岩油气</MenuItem>
-            </MenuGroup>
-            <MenuGroup title=" 稠油开发理论与评价技术">
-                <MenuItem name="3-4">稠油冷采</MenuItem>
-                <MenuItem name="3-5">稠油热采</MenuItem>
-            </MenuGroup>
-        </Submenu>
+        <MenuItem name="/lab">
+            <Icon type="ios-flask"></Icon>
+
+            {{ $t('nav.lab')}}
+        </MenuItem>
         <MenuItem name="/contact">
             <Icon type="ios-telephone"></Icon>
             {{ $t('nav.contact')}}

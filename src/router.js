@@ -35,8 +35,16 @@ const routers = [{
             component: (resolve) => require(['./views/pages/content/news/News.vue'], resolve)
         },
         {
+            path: '/news/:id',
+            component: (resolve) => require(['./views/pages/content/news/OneNews.vue'], resolve)
+        },
+        {
             path: '/lab',
             component: (resolve) => require(['./views/pages/content/lab/Lab.vue'], resolve)
+        },
+        {
+            path: '/labOne/:id',
+            component: (resolve) => require(['./views/pages/content/lab/OneLab.vue'], resolve)
         },
         {
             path: '/contact',

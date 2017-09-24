@@ -23,7 +23,6 @@
                                 </li>
 
 
-
                             </ul>
 
                         </li>
@@ -43,54 +42,20 @@
         data(){
             return {
                 treeData: [
-                    {
-                        first: ' 1. 复杂油气藏建模及数值模拟',
-                        eng:'',
-                        content: [{
-                            second: '1.1 高含水油藏：',
-                            content: [
-                                {name: '夹层识别与表征技术', eng: '', url: ''}, {
-                                    name: '“动静结合，迭代建模建”技术',
-                                    eng: '',
-                                    url: ''
-                                }, {
-                                    name: '底水油藏水平井稳油控水综合治理技术',
-                                    eng: '',
-                                    url: ''
-                                },
-                                {
-                                    name: '强非均质储层水线推进全过程分析评价技术',
-                                    eng: '',
-                                    url: ''
-                                }]
-                        },{
-                            second: '1.2 高含水油藏：',
-                            content: [
-                                {name: '夹层识别与表征技术', eng: '', url: ''}, {
-                                    name: '“动静结合，迭代建模建”技术',
-                                    eng: '',
-                                    url: ''
-                                }, {
-                                    name: '底水油藏水平井稳油控水综合治理技术',
-                                    eng: '',
-                                    url: ''
-                                },
-                                {
-                                    name: '强非均质储层水线推进全过程分析评价技术',
-                                    eng: '',
-                                    url: ''
-                                }]
-                        }]
-                    }]
+                    {content: [{}, {},{}]},
+                    {content: [{}, {},{}]},
+                    {content: [{}, {},{}]},
+                    {content: [{}, {},{}]}
+                    ]
             }
         },
-        mounted(){
+        created(){
             this.$http.get('/researchTree').then(res=> {
                 this.treeData = res.data;
-            })
+            });
             this.run()
         },
-        computed:{
+        computed: {
             eng(){
                 return this.$store.state.eng
             },

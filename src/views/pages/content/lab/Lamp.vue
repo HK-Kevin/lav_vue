@@ -1,7 +1,7 @@
 <template>
-            <div  :ref="refRan" class="box">
+            <div id="box1   " :ref="refRan" class="box">
                 <ul>
-                    <li  v-for="(item,index) in lampData" :key="index"><img :src="ip+item" alt=""/></li>
+                    <li v-for="(item,index) in lampData" :key="index"><img :src="ip+item" alt=""/></li>
 
                 </ul>
             </div>
@@ -12,8 +12,19 @@
         var val=null;
         var reg=null;
         if('getComputedStyle' in window){
-
-            val=getComputedStyle(curEle)[attr];
+            val=getComputedStyle(curEle,false)[attr];
+        }else{
+            if(attr=='opacity'){
+                val=curEle.currentStyle.filter;//alpha(opacity=10)
+                reg=/^alpha\(opacity[=:](\d+(\.\d+)?)\)$/g;
+                //如果正则中加了全局g,test和exec都会影响lastIndex;
+                // return reg.test(val)?reg.exec(val)[1]/100:1;
+                /*if(reg.test(val)){
+                 console.log(RegExp.$1)//拿到当前大正则的第一个小分组； RegExp.$2 拿到第二个小分组； 。。。。最大能拿到$9；
+                 }*/
+                return reg.test(val)?RegExp.$1/100:1;
+            }
+            val=curEle.currentStyle[attr];
         }
         //升级1：对单位的处理
         reg=/^(left|top|right|bottom|width|height|((margin|padding)(left|top|right|bottom)?))$/gi;//记得一定要区分大小写；
@@ -24,7 +35,7 @@
         props:['lampData'],
         data(){
             return{
-                refRan:'box'+Math.round(Math.random()*1000)
+                refRan:'box'+1
             }
         },
         mounted(){
@@ -32,11 +43,13 @@
         },
         methods:{
             light(){
+                //var oBox=document.getElementById('box');
                 let box = this.refRan;
                 var oBox=this.$refs[box];
+                console.log(oBox)
+
                 var oUl=oBox.getElementsByTagName('ul')[0];
-                //var aLi=oBox.getElementsByClassName('oneLi');
-                let aLi = oUl.children;
+                var aLi=oUl.getElementsByTagName('li');
                 var curLeft=utils.getCss(oUl,'left');
 
                 //1.把ul的内容重新copy一份；--问题：折行 因为ul的宽度

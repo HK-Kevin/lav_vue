@@ -35,7 +35,7 @@
                 </Col>
                 <Col span="19">
                 <div class="layout-content-main">
-                    <a-content v-show="(id !== 'book') && id !== 'landmark'  "></a-content>
+                    <a-content v-show="(id !== 'book') && (id !== 'landmark')  "></a-content>
                     <Book v-show="id === 'book'"></Book>
                     <land-mark  v-show="id === 'highWaterCut'"></land-mark>
                     <land-mark  v-show="id === 'lowPerm'"></land-mark>
@@ -94,24 +94,26 @@
         },
         watch:{
             '$route':function (newValue) {
-
+                this.goPage(newValue)
+            }
+        },
+        created(){
+            this.goPage(this.$route)
+        },
+        methods: {
+            getName(a){
+                this.$router.push(a)
+            },
+            goPage(newValue){
                 this.id = newValue.params.id;
                 if(this.id == 'paper'){
                     this.activeItem = '/achievement/2017';
                     this.openName = ['paper'];
-                    console.log(this.openName)
                 }else{
                     this.openName = [];
                     this.activeItem = '/achievement/'+this.id;
 
                 }
-
-
-            }
-        },
-        methods: {
-            getName(a){
-                this.$router.push(a)
             }
         },
 
