@@ -1,31 +1,64 @@
 <template>
         <div>
-            <Carousel autoplay>
-                <CarouselItem v-for="(item,index) in imgData" :key="index">
-                    <div class="demo-carousel">
-                        <img style="height: 300px;width: 100%" :src="ip+item.img" alt="">
-                    </div>
-                </CarouselItem>
 
-            </Carousel>
             <Card style="margin-bottom: 30px">
                 <p slot="title">国际交流</p>
-                <p class="item" v-for="(item,index) in internationalNews" @click="goOneNews(item._id)" :key="index"><span>
+                <Row>
+                    <Col span="8">
+
+                    <p class="item" v-for="(item,index) in internationalNews" @click="goOneNews(item._id)" :key="index"><span>
                 {{index+1}} .{{item.title}}
             </span></p>
+                    </Col>
+                   <Col span="16">
+                    <Carousel autoplay>
+                        <CarouselItem v-for="(item,index) in imgData" :key="index">
+                            <div class="demo-carousel">
+                                <img style="height: 400px;width: 100%" :src="ip+item.img" alt="">
+                            </div>
+                        </CarouselItem>
+
+                    </Carousel>
+                    </Col>
+                </Row>
             </Card>
-            <Card style="margin-bottom: 30px">
-                <p slot="title">学术活动</p>
-                <p class="item" v-for="(item,index) in searchNews" @click="goOneNews(item._id)" :key="index"><span>
+            <Row :gutter="6">
+
+               <Col span="12">
+                <Card style="margin-bottom: 30px">
+                    <p slot="title">学术活动</p>
+                    <Carousel autoplay>
+                        <CarouselItem v-for="(item,index) in imgData" :key="index">
+                            <div class="demo-carousel">
+                                <img style="height: 200px;width: 100%" :src="ip+item.img" alt="">
+                            </div>
+                        </CarouselItem>
+
+                    </Carousel>
+                    <p class="item" v-for="(item,index) in searchNews" @click="goOneNews(item._id)" :key="index"><span>
                 {{index+1}} .{{item.title}}
             </span></p>
-            </Card>
-            <Card style="margin-bottom: 30px">
-                <p slot="title">文体活动</p>
-                <p class="item" v-for="(item,index) in sportNews" @click="goOneNews(item._id)" :key="index"><span>
+                </Card>
+                </Col>
+                <Col span="12">
+                <Card style="margin-bottom: 30px">
+                    <p slot="title">文体活动</p>
+                    <Carousel autoplay>
+                        <CarouselItem v-for="(item,index) in imgData" :key="index">
+                            <div class="demo-carousel">
+                                <img style="height: 200px;width: 100%" :src="ip+item.img" alt="">
+                            </div>
+                        </CarouselItem>
+
+                    </Carousel>
+                    <p class="item" v-for="(item,index) in sportNews" @click="goOneNews(item._id)" :key="index"><span>
                 {{index+1}} .{{item.title}}
             </span></p>
-            </Card>
+                </Card>
+                </Col>
+            </Row>
+
+
         </div>
 </template>
 <script>

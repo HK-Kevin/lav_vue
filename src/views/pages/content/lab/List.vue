@@ -28,11 +28,16 @@
                 return this.$store.state.eng
             }
         },
+        mounted(){
+            this.id = this.$route.params.id;
+            this.activeName = '/labOne/'+this.id;
+        },
         data(){
             return {
                 openData: ['1'],
                 activeName:'',
-                list: [{
+                list:{},
+               /* list: [{
                     title: '一、稠油油藏相关实验', eng: '', child: [
                         {name: '隔夹层对双水平井SAGD蒸汽腔的影响', eng: '', url: '/labOne/sagd'},
                         {name: '海上稠油热采开发效果室内物理模拟实验', eng: '', url: '/labOne/seaOil'},
@@ -52,7 +57,7 @@
                         {name: '平板模型水驱油实验', eng: '', url: '/labOne/waterFloodOil'},
                     ]
                     }
-                ]
+                ]*/
             }
         },
         methods: {
@@ -61,8 +66,10 @@
             }
         },
         created(){
-            this.id = this.$route.params.id;
-            this.activeName = '/labOne/'+this.id;
+            this.$http.get('/lab').then(res=>{
+                this.list = res.data.labList
+            })
+
         },
         components: {Major}
     };

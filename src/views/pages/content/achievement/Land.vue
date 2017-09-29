@@ -4,7 +4,7 @@
         <div class="navbox" v-for="(item,index) in landmarkData" :key="index">
             <h5>{{eng ? item.eng : item.title}}</h5>
             <ul class="nav">
-                <li v-for="(one ,ind) in item.child" :key="ind"><a :href="one.utl">{{ind +1}}. {{eng ? one.eng : one.name}}</a></li>
+                <li v-for="(one ,ind) in item.child" :key="ind"><router-link :to="one.url">{{ind +1}}. {{eng ? one.eng : one.name}}</router-link></li>
 
             </ul>
         </div>
@@ -24,7 +24,7 @@
         data(){
             return {
                 landmarkData: [{title: '页岩油气藏渗流机理', eng: '', child: [
-                        {name: '纳孔-微缝全息表征方法',eng:'',url:''},
+                        {name: '纳孔-微缝全息表征方法',eng:'',url:'/achievement/shale#sj'},
                         {name: '流动机理表征及建模',eng:'',url:''},
                         {name: '天然裂缝与人工裂缝耦合模拟',eng:'',url:''},
                         {name: '产能评价模型及动态分析方法',eng:'',url:''},
@@ -36,7 +36,6 @@
             }
         },
         methods: {
-
             getName(a){
                 this.$router.push(a)
             }

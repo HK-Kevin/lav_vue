@@ -8,12 +8,15 @@
             <Carousel autoplay >
                 <CarouselItem v-for="(item,index) in news.img" :key="index">
                     <div class="demo-carousel" >
-                        <img class="carouselImg" :src="item" alt="">
+                        <img class="carouselImg" :src="ip+item" alt="">
                     </div>
                 </CarouselItem>
 
             </Carousel>
-            <p v-for="(item,index) in news.title"><a href="##">{{index +1}} .   {{eng ? item.eng :item.name}}</a></p>
+            <p v-for="(item,index) in news.title">
+                <router-link to="/news/59c7ce7f0d429f3c6b8d9824">{{index +1}} .   {{eng ? item.eng :item.name}}</router-link>
+                <a href="##"></a>
+            </p>
 
         </Card>
 </template>
@@ -23,6 +26,9 @@
         computed:{
             eng(){
                 return this.$store.state.eng;
+            },
+            ip(){
+                return this.$store.state.ip;
             }
         }
 

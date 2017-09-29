@@ -4,7 +4,7 @@
             <Row :gutter="16">
                 <Col span="5">
                 <div style="width: 100%;height: 1px"></div>
-                <Affix :offset-top="90">
+                <Affix :offset-top="60">
                     <Menu :active-name="activeItem"   @on-select="getName" width="auto" :open-names="openName" accordion>
 
                         <MenuItem v-for="(item,index) in achievementList" :name="item.url">

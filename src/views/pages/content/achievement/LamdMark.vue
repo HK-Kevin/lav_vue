@@ -2,9 +2,10 @@
     <div>
         <Card v-for="(item,index) in tempData" :key="index" style="margin-bottom: 30px">
             <p slot="title">{{eng ? item.eng : item.type}}</p>
-            <div style="width: 100%;text-align: center"  v-for="(one,ind) in item.child" :key="ind" id="child.id">         <!--<p>{{one.name}}</p>-->
-                <Alert type="success"><h2>{{index+1}} . {{eng?one.eng:one.name}}</h2></Alert>
-                <img style="width: 100%" :src="one.img" alt="">
+            <div style="width: 100%;text-align: center" v-for="(one,ind) in item.child" :key="ind" id="child.id">
+                <!--<p>{{one.name}}</p>-->
+                <Alert :id="one.id" type="success"><h2>{{ind+1}} . {{eng?one.eng:one.name}}</h2></Alert>
+                <img style="width: 100%" :src="ip+one.img" alt="">
             </div>
 
         </Card>
@@ -15,14 +16,26 @@
         computed: {
             eng(){
                 return this.$store.state.eng
+            },
+            ip(){
+                return this.$store.state.ip
             }
         },
+        created(){
 
+
+            this.$http.get('/achievement').then(res=> {
+                this.markData = res.data.markData
+
+            })
+        },
+        mounted(){
+        },
         data(){
             return {
-                tempData:{},
+                tempData: {},
                 markData: {
-                    highWaterCut:[{
+                    highWaterCut: [{
                         type: '高含水', eng: '', child: [{
                             name: '纳孔-微缝全息表征方法',
                             eng: '',
@@ -30,7 +43,7 @@
                             id: '12'
                         }]
                     }],
-                    carbonate:[{
+                    carbonate: [{
                         type: '页岩油气藏渗流机理', eng: '', child: [{
                             name: '纳孔-微缝全息表征方法',
                             eng: '',
@@ -38,7 +51,7 @@
                             id: ''
                         }]
                     }],
-                    lowPerm:[{
+                    lowPerm: [{
                         type: '低渗/致密油气', eng: '', child: [{
                             name: '纳孔-微缝全息表征方法',
                             eng: '',
@@ -51,16 +64,23 @@
             }
         },
         methods: {
-
+            goAnchor(selector) {
+                console.log(selector)
+                let anchor = document.getElementById("sj");
+                if(anchor){
+                    document.body.scrollTop = anchor.offsetTop
+                }
+            },
             getName(a){
                 this.$router.push(a)
             }
         },
-        watch:{
+        watch: {
             '$route': function (newValue) {
                 let id = newValue.params.id;
                 this.tempData = this.markData[id];
-
+                try{this.goAnchor(this.$route.hash);}
+                catch (e){}
 
             }
         },

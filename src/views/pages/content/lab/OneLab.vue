@@ -14,7 +14,7 @@
                 <div style="font-size: 16px">
                     {{displayData.content}}
                     <div style="text-align: center;margin-top: 40px">
-                        <img style="width: 80%" :src="displayData.img" alt="">
+                        <img style="width: 80%" :src="ip+displayData.img" alt="">
                     </div>
                 </div>
             </Card>
@@ -29,8 +29,12 @@
     import List from  './List.vue'
     export default {
         computed: {
+
             eng(){
                 return this.$store.state.eng
+            },
+            ip(){
+                return this.$store.state.ip
             }
         },
         data(){
@@ -54,8 +58,15 @@
                     }]
             }
         },
+
+        created(){
+            this.$http.get('/lab').then(res=>{
+                this.lab = res.data.lab
+            })
+        },
         mounted(){
-           this.changeData(this.$route)
+
+            this.changeData(this.$route)
         },
 
         watch: {
@@ -65,11 +76,13 @@
         },
         methods: {
             changeData(newVal){
-                this.lab.forEach(item=> {
+                this.lab.forEach(item=>
+                {
                     if (item.id == newVal.params.id) {
                         this.displayData = item;
                     }
-                })
+                }
+            )
             }
         },
         components: {Major, List}

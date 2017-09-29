@@ -5,7 +5,9 @@
        </div>
         <back-img></back-img>
        <!--menu-->
-       <lab-menu></lab-menu>
+      <div>
+          <lab-menu></lab-menu>
+      </div>
         <!--content-->
         <div class="content" style="margin-top: 20px">
             <router-view></router-view>

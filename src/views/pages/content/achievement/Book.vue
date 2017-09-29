@@ -2,8 +2,8 @@
     <div>
         <Card v-for="(item,index) in bookData" :key="index" style="margin-bottom: 30px">
             <p slot="title">{{eng ? item.eng : item.type}}</p>
-            <div style="width: 100%;text-align: center" v-for="(one,ind) in item.child" :key="ind">
-                <img :src="one.img" alt="">
+            <div style="width: 100%;text-align: center;margin-bottom: 30px" v-for="(one,ind) in item.child" :key="ind">
+                <img style="width: 70%" :src="ip+one.img" alt="">
                 <p>
                     <Icon type="ios-bookmarks"></Icon>
                     <span style="font-size: 18px">{{one.info}}</span></p>
@@ -17,9 +17,18 @@
         computed: {
             eng(){
                 return this.$store.state.eng
+            },
+            ip(){
+                return this.$store.state.ip
             }
         },
 
+        created(){
+            this.$http.get('/achievement').then(res=>{
+                this.bookData =res.data.bookData
+
+            })
+        },
         data(){
             return {
                 bookData: [{

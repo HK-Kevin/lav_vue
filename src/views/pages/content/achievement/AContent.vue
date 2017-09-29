@@ -15,56 +15,17 @@
                 return this.$store.state.eng
             }
         },
+        mounted(){
+            this.$http.get('/achievement').then(res=>{
+             this.achieveData =res.data.achievementData
+
+            })
+        },
 
         data(){
             return {
                 cardData: {},
-                achieveData: {
-                    program: [{
-                        name: '国家基金',
-                        eng: 'fund',
-                        child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
-                    },
-                        {
-                            name: '“973”国家基础理论研究',
-                            eng: '973',
-                            child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
-                        },
-                        {
-                            name: '国家重大专项',
-                            eng: 'nation',
-                            child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
-                        },
-                        {
-                            name: '省部级科研项目',
-                            eng: 'province',
-                            child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
-                        }],
-                    prize: [{
-                        name: '科研获奖',
-                        eng: 'fund',
-                        child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
-                    },
-                        {
-                            name: '教学获奖',
-                            eng: '973',
-                            child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
-                        }],
-                    patent: [{
-                        name: '申请专利',
-                        eng: '',
-                        child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
-                    },
-                        {
-                            name: '软件著作权',
-                            eng: '',
-                            child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]
-                        }],
-                    2017:[{
-                        name: '2017年发表论文',
-                        eng: '',
-                        child: [{title: '肖鹏,邹明. 制作填砂管模型的填砂压实装置, 发明专利, 申请号：201710240046.4', eng: ''}]}]
-                }
+                achieveData: {}
             }
         },
         methods: {
