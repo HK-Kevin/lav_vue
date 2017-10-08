@@ -27,7 +27,7 @@ const routers = [{
         },
         {
             path: '/achievement/:id',
-            component: (resolve) => require(['./views/pages/content/achievement/Achievement.vue'], resolve),
+            component: (resolve) => require(['./views/pages/content/achievement/Achievement.vue'], resolve)
 
         },
         {

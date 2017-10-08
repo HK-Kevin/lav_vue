@@ -14,7 +14,7 @@
                     <Carousel autoplay>
                         <CarouselItem v-for="(item,index) in imgData" :key="index">
                             <div class="demo-carousel">
-                                <img style="height: 400px;width: 100%" :src="ip+item.img" alt="">
+                                <img style="height: 300px;width: 100%" :src="ip+item.img" alt="">
                             </div>
                         </CarouselItem>
 

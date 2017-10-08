@@ -22,8 +22,6 @@
             }
         },
         created(){
-
-
             this.$http.get('/achievement').then(res=> {
                 this.markData = res.data.markData
 
@@ -64,13 +62,6 @@
             }
         },
         methods: {
-            goAnchor(selector) {
-                console.log(selector)
-                let anchor = document.getElementById("sj");
-                if(anchor){
-                    document.body.scrollTop = anchor.offsetTop
-                }
-            },
             getName(a){
                 this.$router.push(a)
             }
