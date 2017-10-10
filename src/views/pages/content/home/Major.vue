@@ -16,7 +16,7 @@
             </p>
             <ol style="margin-left: 15px">
                 <li v-for="item in one.items" style="height: 30px">
-                    <router-link  to="item.router">{{eng ? item.eng : item.name}}</router-link>
+                    <router-link  :to="item.router">{{eng ? item.eng : item.name}}</router-link>
 
                 </li>
             </ol>
@@ -36,20 +36,20 @@
             return {
                 research: [{
                     main:{title: '复杂油气藏建模及数值模拟',eng:'complex oil'},
-                    items: [{router: '/highWaterCut', name: '· 高含水油藏',eng:'· HighWaterCut'},
-                        {router: '/carbonate', name: '· 碳酸盐岩油气藏',eng:'· HighWaterCut'},
-                        {router: '/lowPerm', name: '· 低渗/致密油气',eng:'· HighWaterCut'}]
+                    items: [{router: '/achievement/highWaterCut', name: '· 高含水油藏',eng:'· HighWaterCut'},
+                        {router: '/achievement/carbonate', name: '· 碳酸盐岩油气藏',eng:'· HighWaterCut'},
+                        {router: '/achievement/lowPerm', name: '· 低渗/致密油气',eng:'· HighWaterCut'}]
                 },
                     {
                         main:{title: '致密/页岩油气渗流机理及应用',eng:'complex oil'} ,
-                        items: [{router: '/tightOil', name: ' · 致密油气',eng:'· HighWaterCut'},
-                            {router: '/shaleGas', name: ' · 页岩油气',eng:'· HighWaterCut'}]
+                        items: [{router: '/achievement/tightGas', name: ' · 致密油气',eng:'· HighWaterCut'},
+                            {router: '/achievement/shale', name: ' · 页岩油气',eng:'· HighWaterCut'}]
                     },
                     {
                         main: {title: ' 稠油开采理论与评价技术',eng:'complex oil'} ,
                         items: [
-                            {router: '/heavyHotOil', name: ' · 稠油热采',eng:'· HighWaterCut'},
-                            {router: '/heavyColdOil', name: ' · 稠油冷采',eng:'· HighWaterCut'}]
+                            {router: '/achievement/heavyCold', name: ' · 稠油热采',eng:'· HighWaterCut'},
+                            {router: '/achievement/heavyHot', name: ' · 稠油冷采',eng:'· HighWaterCut'}]
                     }
                 ]
             }
