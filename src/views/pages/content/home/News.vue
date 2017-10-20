@@ -1,9 +1,10 @@
 <template>
         <Card>
             <p slot="title" style=""><Icon type="android-arrow-forward"></Icon> {{ $t('nav.news')}}</p>
-            <a href="#" slot="extra" >
+
+            <a href="##" slot="extra" >
                 <Icon type="forward"></Icon>
-                {{ $t('component.more')}}
+                <router-link to="/news"> {{ $t('component.more')}}</router-link>
             </a>
             <Carousel autoplay >
                 <CarouselItem v-for="(item,index) in news.img" :key="index">

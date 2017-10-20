@@ -1,6 +1,6 @@
 <template>
     <Affix >
-    <Menu mode="horizontal" @on-select="getName" active-name="firstPage" style="background-color:#296ea9;z-index: 99999">
+    <Menu mode="horizontal" @on-select="getName" :active-name="page" style="background-color:#296ea9;z-index: 99999">
         <MenuItem name="/home" >
             <Icon type="ios-home"></Icon>
             {{ $t('nav.home')}}
@@ -47,12 +47,29 @@
 </template>
 <script>
     export default {
+        data:function () {
+            return {
+              page:'/home'
+            }
+        },
         methods: {
-
             getName(a){
                 this.$router.push(a)
             }
-        }
+        },
+        watch: {
+            '$route': function (newVal) {
+                if(newVal.path === '/achievement/2016'){
+                    this.page = '/achievement/2017';
+                    return;
+                }
+                let temp = newVal.path.substr(1);
+                if(temp.indexOf('/') !== -1){
+                    return;
+                }
+                 this.page = newVal.path
+            }
+        },
     };
 </script>
 <style scoped>

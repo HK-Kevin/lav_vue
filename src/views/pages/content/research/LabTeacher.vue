@@ -2,9 +2,9 @@
 
     <Card>
         <p slot="title"> {{ $t('nav.team')}}</p>
-        <a href="/team" slot="extra">
+        <a href="##" slot="extra">
             <Icon type="forward"></Icon>
-            {{ $t('component.more')}}
+            <router-link to="/team"> {{ $t('component.more')}}</router-link>
         </a>
         <Carousel autoplay >
             <CarouselItem v-for="(item,index) in teacherData" :key="index">
@@ -14,9 +14,9 @@
             </CarouselItem>
         </Carousel>
         <p>
-            <a v-for="(item,index) in teacherData" :key="index" :href="item.url" class="list">
+            <router-link v-for="(item,index) in teacherData" :key="index" :to="item.url" class="list">
                 <Icon type="university"></Icon>
-                {{eng ? item.eng : item.name}}</a>
+                {{eng ? item.eng : item.name}}</router-link>
         </p>
     </Card>
 

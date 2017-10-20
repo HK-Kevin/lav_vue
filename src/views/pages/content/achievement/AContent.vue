@@ -16,10 +16,11 @@
             }
         },
         mounted(){
-            this.$http.get('/achievement').then(res=>{
-             this.achieveData =res.data.achievementData
-
-            })
+            this.$http.get('/achievement').then((res) => {
+                this.achieveData =res.data.achievementData;
+            let id = this.$route.params.id;
+            console.log(id)
+            this.cardData = this.achieveData[id];})
         },
 
         data(){
@@ -29,7 +30,6 @@
             }
         },
         methods: {
-
             getName(a){
                 this.$router.push(a)
             }

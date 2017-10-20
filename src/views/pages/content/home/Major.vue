@@ -6,7 +6,7 @@
         </p>
         <a href="#" slot="extra">
             <Icon type="forward"></Icon>
-            {{ $t('component.more')}}
+            <router-link to="/research"> {{ $t('component.more')}}</router-link>
         </a>
         <img style="width: 100%" src="https://hk-kevin.github.io/vue_api/img/oilfield.jpeg" alt="">
         <div v-for="(one,index) in research" :key="index" style="margin-left: 10px">

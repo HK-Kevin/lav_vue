@@ -24,7 +24,13 @@
         created(){
             this.$http.get('/achievement').then(res=> {
                 this.markData = res.data.markData
-
+                let id = this.$route.params.id;
+                this.tempData = this.markData[id];
+                try {
+                    this.goAnchor(this.$route.hash);
+                }
+                catch (e) {
+                }
             })
         },
         mounted(){
@@ -70,8 +76,11 @@
             '$route': function (newValue) {
                 let id = newValue.params.id;
                 this.tempData = this.markData[id];
-                try{this.goAnchor(this.$route.hash);}
-                catch (e){}
+                try {
+                    this.goAnchor(this.$route.hash);
+                }
+                catch (e) {
+                }
 
             }
         },

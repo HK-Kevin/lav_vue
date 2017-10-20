@@ -42,7 +42,10 @@
         created(){
             this.$http.get('/teacherIntroduce').then(res=> {
                 this.teacherData = res.data.teacherIntroduce;
+                let id = this.$route.params.id;
+                this.one = this.teacherData[id];
                 console.log(this.teacherData);
+                console.log(123);
             })
         },
         mounted(){

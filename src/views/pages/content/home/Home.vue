@@ -2,13 +2,13 @@
     <Row :gutter="12">
         <Col span="7">
         <News :news=homeData.news></News>
-        <Major></Major>
+        <Major style="margin-top: 10px"></Major>
 
         </Col>
         <Col span="17">
         <video src="" style="height: 400px" controls="controls" :poster="ip+homeData.video.poster"></video>
         <Team :team=homeData.team :lab=homeData.lab></Team>
-        <Aticle></Aticle>
+        <Aticle style="margin-top: 10px"></Aticle>
         </Col>
     </Row>
 

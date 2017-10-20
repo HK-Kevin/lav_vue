@@ -61,7 +61,8 @@
 
         created(){
             this.$http.get('/lab').then(res=>{
-                this.lab = res.data.lab
+                this.lab = res.data.lab;
+            this.changeData(this.$route)
             })
         },
         mounted(){

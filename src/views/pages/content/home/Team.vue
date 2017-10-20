@@ -8,7 +8,8 @@
             </p>
             <a href="/team" slot="extra">
                 <Icon type="forward"></Icon>
-                {{ $t('component.more')}}
+                <router-link to="/team"> {{ $t('component.more')}}</router-link>
+
             </a>
             <Lamp :lampData="team"></Lamp>
         </Card>
@@ -19,9 +20,9 @@
                 <Icon type="android-arrow-forward"></Icon>
                 {{ $t('nav.lab')}}
             </p>
-            <a href="/contact" slot="extra">
+            <a href="##" slot="extra">
                 <Icon type="forward"></Icon>
-                {{ $t('component.more')}}
+                <router-link to="/lab"> {{ $t('component.more')}}</router-link>
             </a>
             <Lamp :lampData = lab></Lamp>
         </Card>

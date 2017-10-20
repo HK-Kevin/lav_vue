@@ -25,6 +25,8 @@
             this.$http.get('/paper').then(res=> {
                 this.paperList = res.data.paperList;
                 this.paperData = res.data;
+                let id = this.$route.params.id;
+                this.tempData = this.paperData[id];
             })
         },
         watch: {

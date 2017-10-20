@@ -17,7 +17,6 @@
                 </Col>
                 <Col span="19">
                 <div class="layout-content-main">
-
                     <one-content></one-content>
                 </div>
                 </Col>
