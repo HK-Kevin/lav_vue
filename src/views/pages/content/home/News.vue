@@ -14,8 +14,8 @@
                 </CarouselItem>
 
             </Carousel>
-            <p v-for="(item,index) in news.title">
-                <router-link to="/news/59c7ce7f0d429f3c6b8d9824">{{index +1}} .   {{eng ? item.eng :item.name}}</router-link>
+            <p class="item" v-for="(item,index) in news.title">
+                <router-link style="color: black" :to="item.ip">{{index +1}} .   {{eng ? item.eng :item.name}}</router-link>
                 <a href="##"></a>
             </p>
 
@@ -46,4 +46,14 @@
     width: 100%;
     height: 200px;
 }
+    .ivu-menu-item {
+        border-bottom: 1px solid rgba(41, 110, 169, .2);
+    }
+
+    .item:hover {
+        color: #1b6d85;
+        cursor: pointer;
+        margin-left: -3px;
+        border-right: 3px solid green;
+    }
 </style>

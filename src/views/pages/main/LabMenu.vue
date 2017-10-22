@@ -27,7 +27,7 @@
                 <MenuItem name="/achievement/book">{{ $t('nav.achievement.book')}}</MenuItem>
                 <MenuItem name="/achievement/prize">{{ $t('nav.achievement.prize')}}</MenuItem>
                 <MenuItem name="/achievement/patent">{{ $t('nav.achievement.patent')}}</MenuItem>
-                <MenuItem name="/achievement/land">{{ $t('nav.achievement.landmark')}}</MenuItem>
+                <MenuItem name="/achievement/highWaterCut">{{ $t('nav.achievement.landmark')}}</MenuItem>
         </Submenu>
         <MenuItem name="/news">
             <Icon type="social-designernews"></Icon>

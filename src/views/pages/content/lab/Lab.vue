@@ -67,7 +67,6 @@
         created(){
             this.$http.get('/homeData').then(res=> {
                 this.labData = res.data.lab;
-                console.log(this.labData)
             })
         },
         components: {Major, LabList, VueImgSlider}

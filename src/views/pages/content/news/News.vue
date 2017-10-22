@@ -12,9 +12,9 @@
                     </Col>
                    <Col span="16">
                     <Carousel autoplay>
-                        <CarouselItem v-for="(item,index) in imgData" :key="index">
+                        <CarouselItem v-for="(item,index) in imgData.internationalNews" :key="index">
                             <div class="demo-carousel">
-                                <img style="height: 300px;width: 100%" :src="ip+item.img" alt="">
+                                <img style="height: 300px;width: 100%" :src="ip+item" alt="">
                             </div>
                         </CarouselItem>
 
@@ -28,9 +28,9 @@
                 <Card style="margin-bottom: 30px">
                     <p slot="title">学术活动</p>
                     <Carousel autoplay>
-                        <CarouselItem v-for="(item,index) in imgData" :key="index">
+                        <CarouselItem v-for="(item,index) in imgData.searchNews" :key="index">
                             <div class="demo-carousel">
-                                <img style="height: 200px;width: 100%" :src="ip+item.img" alt="">
+                                <img style="height: 200px;width: 100%" :src="ip+item" alt="">
                             </div>
                         </CarouselItem>
 
@@ -44,9 +44,9 @@
                 <Card style="margin-bottom: 30px">
                     <p slot="title">文体活动</p>
                     <Carousel autoplay>
-                        <CarouselItem v-for="(item,index) in imgData" :key="index">
+                        <CarouselItem v-for="(item,index) in imgData.sportNews" :key="index">
                             <div class="demo-carousel">
-                                <img style="height: 200px;width: 100%" :src="ip+item.img" alt="">
+                                <img style="height: 200px;width: 100%" :src="ip+item" alt="">
                             </div>
                         </CarouselItem>
 
@@ -73,13 +73,13 @@
         },
         data(){
             return{
-                imgData:[{img:'/news/sd.png'},{img:'/news/ty.png'}],
+                imgData:{},
                 internationalNews:{},
                 searchNews:{},
                 sportNews:{},
                 title_page: 1,
                 totalPage: 100,
-                limit: 3,
+                limit: 8,
 
             }
         },
@@ -90,6 +90,13 @@
 
         },
         created(){
+            this.$http.get('/newsImg').then(res=> {
+                 this.imgData = res.data;
+                console.log(this.imgData['sportNews'])
+                console.dir(this.imgData)
+            });
+
+
             let searchCon = {page: this.title_page, limit: this.limit, type: '国际交流'};
             this.$http.post('/news/typeTitles', searchCon).then(res => {
                 this.internationalNews =res.data

@@ -8,7 +8,7 @@
         <Col span="17">
         <video src="" style="height: 400px" controls="controls" :poster="ip+homeData.video.poster"></video>
         <Team :team=homeData.team :lab=homeData.lab></Team>
-        <Aticle style="margin-top: 10px"></Aticle>
+        <Aticle :articles=homeData.article :contacts="homeData.contact" style="margin-top: 10px"></Aticle>
         </Col>
     </Row>
 

@@ -1,10 +1,7 @@
 <template>
         <Card>
             <p slot="title" style=""><Icon type="android-arrow-forward"></Icon> {{ $t('nav.contact')}}</p>
-            <a href="/contact" slot="extra" >
-                <Icon type="forward"></Icon>
-                {{ $t('component.more')}}
-            </a>
+
             <p class="contact" v-for="(item,index) in contact" :key="index"><Icon :type="item.icon"></Icon><span style="font-size: 16px;margin-left: 5px">{{eng ? item.eng : item.name}}</span></p>
             </div>
             <div  id="container" ></div>

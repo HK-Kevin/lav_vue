@@ -8,7 +8,7 @@
                     <router-link to="/achievement/2016"> {{ $t('component.more')}}</router-link>
 
                 </a>
-                <p v-for="(item,index) in article" :key="index"><Icon type="ios-book-outline"></Icon>{{item}}</p>
+                <p class="item" v-for="(item,index) in articles" :key="index"><Icon type="ios-book-outline"></Icon>  {{item}}</p>
             </Card>
             </Col>
             <Col span="8">
@@ -18,7 +18,7 @@
                     <Icon type="forward"></Icon>
                     <router-link to="/contact"> {{ $t('component.more')}}</router-link>
                 </a>
-                <p class="contact" v-for="(item,index) in contact" :key="index"><Icon :type="item.icon"></Icon><span>{{eng ? item.eng : item.name}}</span></p>
+                <p class="contact" v-for="(item,index) in contacts" :key="index"><Icon :type="item.icon"></Icon><span>{{eng ? item.eng : item.name}}</span></p>
 
             </Card>
             </Col>
@@ -26,26 +26,10 @@
 </template>
 <script>
     export default {
+        props:['articles','contacts'],
         computed:{
             eng(){
                 return this.$store.state.eng
-            }
-        },
-        data(){
-            return{
-                article:[
-                        'Cheng L, Gu H, Huang S. A comprehensive mathematical model for estimating oil drainage rate in SAGD process considering wellbore/formation coupling effect[J]. Heat & Mass Transfer, 2016:1-19.',
-                        'Huang S, Xiong H, Wei S, et al. Physical simulation of the interlayer effect on SAGD production in mackay river oil sands[J]. Fuel, 2016, 183:373-385.',
-                        'Cao R, Wang Y, Cheng L, et al. A New Model for Determining the Effective Permeability of Tight Formation[J]. Transport in Porous Media, 2016, 112(1):21-37.'
-                ],
-                contact:[
-                        {name:'北京市昌平区府学路18号',eng:'18 Fuxue Road, Bejing',icon:'ios-home'},
-                    {name:'中油大厦712',eng:'712 ZY building',icon:'card'},
-                    {name:'邮编: 102200',eng:'Zip code:102200',icon:'ios-pricetags'},
-                    {name:'Email: lscheng@cup.edu.cn',eng:'Email: lscheng@cup.edu.cn',icon:'ios-email'},
-                    {name:'Tel: 010-89733218',eng:'Tel: 010-89733218',icon:'ios-telephone'}
-
-                        ]
             }
         }
     };
@@ -63,5 +47,15 @@
    }
     .contact span{
         margin-left: 10px;
+    }
+    .ivu-menu-item {
+        border-bottom: 1px solid rgba(41, 110, 169, .2);
+    }
+
+    .item:hover {
+        color: #1b6d85;
+        cursor: pointer;
+        margin-left: -3px;
+        border-right: 3px solid green;
     }
 </style>

@@ -9,11 +9,14 @@
         </Card>
         <Card style="margin-top: 30px">
             <p slot="title" style="font-size: 18px">教研成果</p>
-            <ul>
-                <li v-for="(item,index) in one.paperList" :key="index" class="list">{{index+1}} .{{item}}</li>
+            <Card v-for="(item,index) in one.paperList" :key="index">
+                <p slot="title">{{item.title}}</p>
+                <ul>
+                    <li v-for="(it,ind) in item.content" :key="ind" class="list">{{ind+1}} .{{it}}</li>
 
+                </ul>
+            </Card>
 
-            </ul>
 
         </Card>
     </div>
@@ -44,8 +47,6 @@
                 this.teacherData = res.data.teacherIntroduce;
                 let id = this.$route.params.id;
                 this.one = this.teacherData[id];
-                console.log(this.teacherData);
-                console.log(123);
             })
         },
         mounted(){
