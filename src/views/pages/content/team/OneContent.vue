@@ -5,7 +5,7 @@
         </div>
         <Card>
             <p slot="title" style="font-size: 18px">{{eng ? one.name.eng : one.name.china}}</p>
-            <div v-html="one.introduce.china"></div>
+            <p v-html="one.introduce.china"></p>
         </Card>
         <Card style="margin-top: 30px">
             <p slot="title" style="font-size: 18px">教研成果</p>

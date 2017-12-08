@@ -4,13 +4,24 @@
             <Card style="margin-bottom: 30px">
                 <p slot="title">国际交流</p>
                 <Row>
-                    <Col span="8">
+                    <Col span="10">
 
-                    <p class="item" v-for="(item,index) in internationalNews" @click="goOneNews(item._id)" :key="index"><span>
-                {{index+1}} .{{item.title}}
-            </span></p>
+                   <div style="height: 270px">
+                       <p class="item" style="height: 30px;font-size: 14px" v-for="(item,index) in internationalNews" @click="goOneNews(item._id)" :key="index"><span style="overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;width: 300px;display: inline-block">
+                {{index+1+9*(title_page-1)}} .{{item.title}}
+            </span> <span style="float: right;margin-right: 10px">{{item.date.slice(0,10)}}</span></p>
+                   </div>
+                    <Page
+                            :current="1"
+                            :total="interTotalPage"
+                            simple
+                            :page-size="9"
+                            @on-change="interChange"
+                    ></Page>
                     </Col>
-                   <Col span="16">
+                   <Col span="14">
                     <Carousel autoplay>
                         <CarouselItem v-for="(item,index) in imgData.internationalNews" :key="index">
                             <div class="demo-carousel">
@@ -35,9 +46,18 @@
                         </CarouselItem>
 
                     </Carousel>
-                    <p class="item" v-for="(item,index) in searchNews" @click="goOneNews(item._id)" :key="index"><span>
-                {{index+1}} .{{item.title}}
-            </span></p>
+                   <div style="height: 270px">
+                       <p class="item" style="height: 30px;font-size: 14px" v-for="(item,index) in searchNews" @click="goOneNews(item._id)" :key="index"><span class="spanStyle">
+                {{index+1+9*(study_page-1)}} .{{item.title}}
+            </span><span style="float: right;margin-right: 10px">{{item.date.slice(0,10)}}</span></p>
+                   </div>
+                    <Page
+                            :current="1"
+                            :total="studyTotalPage"
+                            simple
+                            :page-size="9"
+                            @on-change="studyChange"
+                    ></Page>
                 </Card>
                 </Col>
                 <Col span="12">
@@ -51,10 +71,20 @@
                         </CarouselItem>
 
                     </Carousel>
-                    <p class="item" v-for="(item,index) in sportNews" @click="goOneNews(item._id)" :key="index"><span>
-                {{index+1}} .{{item.title}}
-            </span></p>
+                   <div style="height: 270px">
+                       <p class="item" style="height: 30px;font-size: 14px" v-for="(item,index) in sportNews" @click="goOneNews(item._id)" :key="index"><span class="spanStyle">
+                {{index+1+9*(sport_page-1)}} .{{item.title}}
+            </span><span style="float: right;margin-right: 10px">{{item.date.slice(0,10)}}</span></p>
+                   </div>
+                    <Page
+                            :current="1"
+                            :total="sportTotalPage"
+                            simple
+                            :page-size="9"
+                            @on-change="sportChange"
+                    ></Page>
                 </Card>
+
                 </Col>
             </Row>
 
@@ -78,38 +108,62 @@
                 searchNews:{},
                 sportNews:{},
                 title_page: 1,
-                totalPage: 100,
-                limit: 8,
+                interTotalPage: 100,
+                studyTotalPage: 100,
+                study_page:1,
+                sportTotalPage: 100,
+                sport_page:1,
+                limit: 9,
 
             }
         },
         methods: {
             goOneNews(a){
                 this.$router.push('/news/'+a)
+            },
+            interChange(val) {
+                this.title_page = val;
+                this.searchInter();
+            },
+            studyChange(val) {
+                this.study_page = val;
+                this.searchStudy();
+            },
+            sportChange(val){
+                this.sport_page = val;
+                this.searchSport();
+            },
+            searchInter() {
+                let searchCon = {page: this.title_page, limit: this.limit, type: '国际交流'};
+                this.$http.post('/news/typeTitles', searchCon).then(res => {
+                    this.internationalNews = res.data.data;
+                    this.interTotalPage =  res.data.count
+                })
+            },
+            searchStudy(){
+                let  searchCon = {page: this.study_page, limit: this.limit, type: '学术'};
+                this.$http.post('/news/typeTitles', searchCon).then(res => {
+                    this.searchNews = res.data.data;
+                    this.studyTotalPage =  res.data.count
+                })
+            },
+            searchSport(){
+                let  searchCon = {page: this.sport_page, limit: this.limit, type: '文体活动'};
+                this.$http.post('/news/typeTitles', searchCon).then(res => {
+                    this.sportNews =res.data.data;
+                    this.sportTotalPage =  res.data.count
+
+                })
             }
 
         },
         created(){
             this.$http.get('/newsImg').then(res=> {
                  this.imgData = res.data;
-                console.log(this.imgData['sportNews'])
-                console.dir(this.imgData)
             });
-
-
-            let searchCon = {page: this.title_page, limit: this.limit, type: '国际交流'};
-            this.$http.post('/news/typeTitles', searchCon).then(res => {
-                this.internationalNews =res.data
-            })
-             searchCon = {page: this.title_page, limit: this.limit, type: '学术'};
-            this.$http.post('/news/typeTitles', searchCon).then(res => {
-                this.searchNews =res.data
-            })
-            searchCon = {page: this.title_page, limit: this.limit, type: '文体活动'};
-            this.$http.post('/news/typeTitles', searchCon).then(res => {
-                this.sportNews =res.data
-            })
-
+           this.searchInter();
+           this.searchStudy();
+           this.searchSport()
         }
     };
 </script>
@@ -121,7 +175,15 @@
     .item:hover {
         color: #1b6d85;
         cursor: pointer;
+        font-size: 16px;
         margin-left: -3px;
         border-right: 3px solid green;
+    }
+    .spanStyle{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 400px;
+        display: inline-block
     }
 </style>

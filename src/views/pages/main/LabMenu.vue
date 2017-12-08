@@ -1,7 +1,7 @@
 <template>
     <Affix >
     <Menu mode="horizontal" @on-select="getName" :active-name="page" style="background-color:#296ea9;z-index: 99999">
-        <MenuItem name="/home" >
+        <MenuItem name="/" >
             <Icon type="ios-home"></Icon>
             {{ $t('nav.home')}}
         </MenuItem>
