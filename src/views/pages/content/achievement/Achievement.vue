@@ -31,6 +31,12 @@
                             v-show="
                             (id !== 'book')
                             && (id !== 'landmark')
+                            && (id !== '2023')
+                            && (id !== '2022')
+                            && (id !== '2021')
+                            && (id !== '2020')
+                            && (id !== '2019')
+                            && (id !== '2018')
                             && (id !== '2017')
                             && (id !== '2016')
                             && (id !== '2015')
@@ -48,10 +54,19 @@
                             && (id !== '2003')
                             && (id !== '2002')
                             && (id !== '2001')
+                            && (id !== '2000')
+
+
 "
 
                     ></a-content>
                     <Book v-show="id === 'book'"></Book>
+                    <Artical v-show="id === '2023'"></Artical>
+                    <Artical v-show="id === '2022'"></Artical>
+                    <Artical v-show="id === '2021'"></Artical>
+                    <Artical v-show="id === '2020'"></Artical>
+                    <Artical v-show="id === '2019'"></Artical>
+                    <Artical v-show="id === '2018'"></Artical>
                     <Artical v-show="id === '2017'"></Artical>
                     <Artical v-show="id === '2016'"></Artical>
                     <Artical v-show="id === '2015'"></Artical>
@@ -69,6 +84,7 @@
                     <Artical v-show="id === '2003'"></Artical>
                     <Artical v-show="id === '2002'"></Artical>
                     <Artical v-show="id === '2001'"></Artical>
+                    <Artical v-show="id === '2000'"></Artical>
                     <land-mark v-show="id === 'highWaterCut'"></land-mark>
                     <land-mark v-show="id === 'lowPerm'"></land-mark>
                     <land-mark v-show="id === 'carbonate'"></land-mark>

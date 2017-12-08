@@ -5,12 +5,21 @@
             <p class="contact" v-for="(item,index) in contact" :key="index"><Icon :type="item.icon"></Icon><span style="font-size: 16px;margin-left: 5px">{{eng ? item.eng : item.name}}</span></p>
             </div>
             <div  id="container" ></div>
+            <baidu-map class="bm-view" ak="C442db13ee343023e84546b6765dfcff"  :center="{lng: 116.25398,lat: 40.224471}" :zoom="15">
+                <bm-marker :position="{lng: 116.25398, lat: 40.224471}" :dragging="true" animation="BMAP_ANIMATION_BOUNCE">
+                    <bm-label content="中国石油大学（北京）" :labelStyle="{color: 'red', fontSize : '24px'}" :offset="{width: -105, height: 40}"/>
+                </bm-marker>
+            </baidu-map>
             </div>
         </Card>
 
 
 </template>
+
 <script>
+    import {BaiduMap} from 'vue-baidu-map'
+    import {BmMarker} from 'vue-baidu-map'
+    import {BmLabel} from 'vue-baidu-map'
     import Major from '../home/Major.vue'
     export default {
         computed:{
@@ -31,29 +40,17 @@
             }
         },
         mounted(){
-            this.runMap()
-        },
-        methods: {
-            runMap(){
-                var map = new BMap.Map("container");          // 创建地图实例
-                var point = new BMap.Point(116.25398,40.224471);  // 创建点坐标
-                /* map.centerAndZoom(point, 18);   */              // 初始化地图，设置中心点坐标和地图级别
-                var local = new BMap.LocalSearch(map, {
-                    renderOptions:{map: map}
-                });
-                local.search("北京市昌平区府学路18号");
-                console.log(map)
-            }
 
         },
-        components:{Major}
+
+        components:{Major, BaiduMap,BmMarker,BmLabel}
     };
 </script>
 <style scoped>
     .contact{
         padding: 5px 0
     }
-    #container{
+    .bm-view{
         width: 100%;
         height:400px;
     }

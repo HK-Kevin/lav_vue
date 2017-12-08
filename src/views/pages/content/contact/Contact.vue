@@ -5,8 +5,6 @@
         </Col>
         <Col span="18">
        <Add></Add>
-
-
         </Col>
     </Row>
 

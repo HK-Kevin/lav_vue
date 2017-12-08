@@ -6,7 +6,7 @@ const routers = [{
     component: (resolve) => require(['./views/index.vue'], resolve),
     children: [
         {
-            path: '/home',
+            path: '/',
             component: (resolve) => require(['./views/pages/content/home/Home.vue'], resolve)
         },
         {
